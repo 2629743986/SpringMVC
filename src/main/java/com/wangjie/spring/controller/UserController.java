@@ -24,6 +24,7 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
 
+
    /* @ModelAttribute
     public void populateModel(@RequestParam String abc, Model model){
         model.addAttribute("attributeName",abc);
@@ -32,6 +33,8 @@ public class UserController {
     //@Resource(name="UserMapper")
     @Resource(name="userMapper")
     private UserMapper userMapper;
+    @Resource
+    private UserService userService;
 
    @ModelAttribute(value = "myUser")
     public User populateModel(){
@@ -40,7 +43,6 @@ public class UserController {
         user.setPassword("123");
         return user;
     }
-
 
     @RequestMapping(value = "/handle")
     public void handle(){
@@ -119,9 +121,6 @@ public class UserController {
 
         return "helloWorld";
     }
-
-    @Resource
-    private UserService userService;
 
     @RequestMapping("/showUser")
     public String toIndex(HttpServletRequest request, Model model) {
