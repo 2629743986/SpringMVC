@@ -1,7 +1,10 @@
 package com.wangjie.spring.model;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 
+@Data
 public class User {
 //    @NotNull
     private Integer id;
@@ -9,6 +12,13 @@ public class User {
     private String username;
 
     private String password;
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public User() {
+    }
 
     public Integer getId() {
         return id;

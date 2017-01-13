@@ -4,6 +4,7 @@ import com.wangjie.spring.dao.UserMapper;
 import com.wangjie.spring.model.QueryCondition;
 import com.wangjie.spring.model.User;
 import com.wangjie.spring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,8 @@ public class UserController {
     }*/
 
     //@Resource(name="UserMapper")
-    @Resource(name="userMapper")
+   /* @Resource(name="userMapper")*/
+    @Resource
     private UserMapper userMapper;
     @Resource
     private UserService userService;
@@ -50,11 +52,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/testPost",method = RequestMethod.POST)
-    public void testPost(
-            @RequestParam(value="sex",required=false) String  sex
-    ){
+    public String testPost(String sex, User user) {
+
+        System.out.println(user);
         System.out.println("123");
         System.out.println(sex);
+        return "helloWorld";
+
     }
 
     @RequestMapping(value = "/testPost2",method = RequestMethod.GET)
@@ -129,6 +133,17 @@ public class UserController {
         User user = this.userService.getUserById(userId);
         model.addAttribute("user", user);
         return "showUser";
+    }
+
+    @ResponseBody
+    @RequestMapping("/getJsonFormat")
+    public User getJsonFormat() {
+        System.out.println("get Json Data...");
+        User user = new User();
+        user.setId(123);
+        user.setPassword("456");
+        user.setUsername("feilong");
+        return user;
     }
 
 

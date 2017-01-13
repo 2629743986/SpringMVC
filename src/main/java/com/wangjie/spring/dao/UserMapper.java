@@ -3,7 +3,7 @@ package com.wangjie.spring.dao;
 import com.wangjie.spring.model.User;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository(value = "userMapper")
 public interface UserMapper {
 
     int deleteByPrimaryKey(Integer id);

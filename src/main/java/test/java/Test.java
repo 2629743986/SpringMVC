@@ -1,5 +1,7 @@
 package test.java;
 
+import com.wangjie.spring.model.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,35 @@ public class Test {
 	public void testStudent(){
 
 	}
+
+	@org.junit.Test
+	public void testGeneric() {
+		List<String> list = new ArrayList<String>();
+		list.add("1");
+		list.add("2");
+		list.add("abc");
+		for (String object : list) {
+			object = "55";
+		}
+
+		int a = 0;
+	}
+
+	@org.junit.Test
+	public void testGeneric2() {
+		List<User> list = new ArrayList<User>();
+		list.add(new User("1"));
+		list.add(new User("2"));
+		list.add(new User("3"));
+		System.out.println("888");
+		System.out.println(list);
+		/*for (User user : list){
+			user= new User("4");
+		}*/
+		System.out.println(list);
+		int a = 0;
+	}
+
 	interface Info<T>{
 		public T getVar();
 	}
@@ -30,21 +61,12 @@ public class Test {
 			this.setVar(var);
 		}
 
-		public void setVar(T var){
-			this.var=var;
-		}
 		public T getVar(){
 			return this.var;
 		}
-	}
 
-	@org.junit.Test
-	public void testGeneric(){
-		List<String> list=new ArrayList<String>();
-		list.add("abc");
-		for (String object : list){
-			System.out.println(object);
-
+		public void setVar(T var) {
+			this.var = var;
 		}
 	}
 

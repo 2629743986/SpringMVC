@@ -2,6 +2,7 @@ package com.wangjie.spring.feilong;
 
 import org.apache.commons.io.input.ReaderInputStream;
 import org.junit.Test;
+import org.springframework.jndi.JndiObjectFactoryBean;
 
 import java.io.*;
 
